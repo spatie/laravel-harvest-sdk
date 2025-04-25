@@ -2,9 +2,9 @@
 
 namespace Spatie\Harvest;
 
+use Spatie\Harvest\Commands\HarvestCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\Harvest\Commands\HarvestCommand;
 
 class HarvestServiceProvider extends PackageServiceProvider
 {
