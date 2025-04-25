@@ -1,4 +1,4 @@
-# A Laravel SDK for the Float.com API
+# A Laravel SDK for the Harvest.com API
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-harvest-sdk.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-harvest-sdk)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-harvest-sdk/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/spatie/laravel-harvest-sdk/actions?query=workflow%3Arun-tests+branch%3Amain)
