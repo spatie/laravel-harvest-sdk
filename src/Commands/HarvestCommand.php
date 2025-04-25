@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Spatie\Harvest\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class HarvestCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-harvest-sdk';
 
     public $description = 'My command';
 
