@@ -17,6 +17,7 @@ class Harvest extends Connector
     {
         return 'https://api.harvestapp.com/v2';
     }
+
     protected function defaultHeaders(): array
     {
         return [

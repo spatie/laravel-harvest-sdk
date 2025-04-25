@@ -35,7 +35,6 @@ it('throws an exception if account_id is missing', function () {
     app(Harvest::class);
 })->throws('No Harvest account ID was provided. Make sure to set the `HARVEST_ACCOUNT_ID` environment variable.');
 
-
 it('throws an exception if access_token is missing', function () {
     config()->set('harvest-sdk', [
         'account_id' => 'fake-account-id',
