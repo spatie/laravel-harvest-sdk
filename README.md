@@ -1,11 +1,11 @@
-# A Laravel-friendly SDK to interact with the Harvest API
+# A Laravel SDK for the Harvest.com API
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-harvest-sdk.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-harvest-sdk)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-harvest-sdk/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/spatie/laravel-harvest-sdk/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-harvest-sdk/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/spatie/laravel-harvest-sdk/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-harvest-sdk.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-harvest-sdk)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+A Laravel-friendly SDK to interact with the Harvest API
 
 ## Support us
 

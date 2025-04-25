@@ -2,7 +2,7 @@
 
 namespace Spatie\Harvest;
 
-use Spatie\Harvest\Commands\HarvestCommand;
+use Spatie\Harvest\Exceptions\HarvestException;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -17,9 +17,29 @@ class HarvestServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-harvest-sdk')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel_harvest_sdk_table')
-            ->hasCommand(HarvestCommand::class);
+            ->hasConfigFile();
+    }
+
+    public function registeringPackage(): void
+    {
+        $this->app->scoped(Harvest::class, function () {
+            if (config('harvest-sdk.account_id') === null) {
+                throw HarvestException::missingAccountId();
+            }
+
+            if (config('harvest-sdk.access_token') === null) {
+                throw HarvestException::missingAccessToken();
+            }
+
+            if (config('harvest-sdk.user_agent') === null) {
+                throw HarvestException::missingUserAgent();
+            }
+
+            return new Harvest(
+                config('harvest-sdk.account_id'),
+                config('harvest-sdk.access_token'),
+                config('harvest-sdk.user_agent'),
+            );
+        });
     }
 }
