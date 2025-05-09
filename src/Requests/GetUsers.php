@@ -22,9 +22,9 @@ class GetUsers extends Request
 
     protected function defaultQuery(): array
     {
-        return [
+        return array_filter([
             'is_active' => $this->active,
-        ];
+        ], fn (mixed $value) => $value !== null);
     }
 
     /** @return array<UserResource> */
