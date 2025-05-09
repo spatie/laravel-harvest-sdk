@@ -11,9 +11,20 @@ class GetUsers extends Request
 {
     public Method $method = Method::GET;
 
+    public function __construct(
+        public ?bool $active = null,
+    ) {}
+
     public function resolveEndpoint(): string
     {
         return '/users';
+    }
+
+    protected function defaultQuery(): array
+    {
+        return [
+            'is_active' => $this->active,
+        ];
     }
 
     /** @return array<UserResource> */

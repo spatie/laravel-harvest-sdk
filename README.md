@@ -74,6 +74,21 @@ public function user(Harvest $harvest): array
 }
 ```
 
+## Filtering
+
+You can filter the results by passing an array of filters to the `all` method:
+
+```php
+use Spatie\Harvest\Harvest;
+use Spatie\Harvest\Resources\UserResource;
+
+/** @return array<UserResource> */
+public function user(Harvest $harvest): array
+{
+    return $harvest->users()->all(active: true);
+}
+```
+
 
 ## Testing
 
