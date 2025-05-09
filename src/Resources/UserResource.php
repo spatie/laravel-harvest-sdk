@@ -3,12 +3,13 @@
 namespace Spatie\Harvest\Resources;
 
 use Carbon\CarbonImmutable;
+use Spatie\Harvest\Enums\AccessRole;
 
 class UserResource
 {
     /**
      * @param  array<string>  $roles
-     * @param  array<string>  $accessRoles
+     * @param  array<AccessRole>  $accessRoles
      */
     public function __construct(
         public int $id,
@@ -33,6 +34,11 @@ class UserResource
     /** @param array<string, mixed> $response */
     public static function createFromResponse(array $response): self
     {
+        $accessRoles = array_map(
+            fn (string $accessRole) => AccessRole::from($accessRole),
+            $response['access_roles']
+        );
+
         return new self(
             id: $response['id'],
             firstName: $response['first_name'],
@@ -47,7 +53,7 @@ class UserResource
             defaultHourlyRate: $response['default_hourly_rate'],
             costRate: $response['cost_rate'],
             roles: $response['roles'],
-            accessRoles: $response['access_roles'],
+            accessRoles: $accessRoles,
             avatarUrl: $response['avatar_url'],
             createdAt: CarbonImmutable::parse($response['created_at']),
             updatedAt: CarbonImmutable::parse($response['updated_at']),
