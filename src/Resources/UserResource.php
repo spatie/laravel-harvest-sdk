@@ -7,8 +7,8 @@ use Carbon\CarbonImmutable;
 class UserResource
 {
     /**
-     * @param array<string> $roles
-     * @param array<string> $accessRoles
+     * @param  array<string>  $roles
+     * @param  array<string>  $accessRoles
      */
     public function __construct(
         public int $id,
