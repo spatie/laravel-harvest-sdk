@@ -11,7 +11,7 @@ class UserGroup extends BaseResource
 {
     public function me(): Response
     {
-        return $this->connector->send(new GetAuthenticatedUser());
+        return $this->connector->send(new GetAuthenticatedUser);
     }
 
     public function all(): Response
