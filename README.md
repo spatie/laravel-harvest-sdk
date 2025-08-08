@@ -23,37 +23,85 @@ You can install the package via composer:
 composer require spatie/laravel-harvest-sdk
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-harvest-sdk-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="laravel-harvest-sdk-config"
 ```
 
-This is the contents of the published config file:
+Add your Harvest credentials to your .env file:
 
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-harvest-sdk-views"
+```dotenv
+HARVEST_ACCOUNT_ID=your-account-id
+HARVEST_ACCESS_TOKEN=your-access-token
+HARVEST_USER_AGENT='name (name@email.com)'
 ```
 
 ## Usage
 
+To start interacting with the Harvest API, you can resolve the Harvest instance from the container:
+
 ```php
-$harvest = new Spatie\Harvest();
-echo $harvest->echoPhrase('Hello, Spatie!');
+use Spatie\Harvest\Harvest;
+
+$harvest = app(Harvest::class);
+```
+
+## Users
+
+###  Retrieve the authenticated user
+
+```php
+use Spatie\Harvest\Harvest;
+use Spatie\Harvest\Resources\UserResource;
+
+public function user(Harvest $harvest): UserResource
+{
+    return $harvest->users()->me();
+}
+```
+
+###  Retrieve all users
+
+```php
+use Spatie\Harvest\Harvest;
+use Spatie\Harvest\Resources\UserResource;
+
+/** @return array<UserResource> */
+public function user(Harvest $harvest): array
+{
+    return $harvest->users()->all();
+}
+```
+
+## Projects
+
+###  Retrieve all projects
+
+```php
+use Spatie\Harvest\Harvest;
+use Spatie\Harvest\Resources\ProjectResource;
+
+/** @return array<ProjectResource> */
+public function user(Harvest $harvest): array
+{
+    return $harvest->projects()->all();
+}
+```
+
+## Filtering
+
+You can filter the results by passing an array of filters to the `all` method:
+
+```php
+use Spatie\Harvest\Harvest;
+use Spatie\Harvest\Resources\UserResource;
+
+/** @return array<UserResource> */
+public function user(Harvest $harvest): array
+{
+    return $harvest->users()->all(active: true);
+}
 ```
 
 ## Testing
