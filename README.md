@@ -74,6 +74,21 @@ public function user(Harvest $harvest): array
 }
 ```
 
+## Projects
+
+###  Retrieve all projects
+
+```php
+use Spatie\Harvest\Harvest;
+use Spatie\Harvest\Resources\ProjectResource;
+
+/** @return array<ProjectResource> */
+public function user(Harvest $harvest): array
+{
+    return $harvest->projects()->all();
+}
+```
+
 ## Filtering
 
 You can filter the results by passing an array of filters to the `all` method:
@@ -88,7 +103,6 @@ public function user(Harvest $harvest): array
     return $harvest->users()->all(active: true);
 }
 ```
-
 
 ## Testing
 
