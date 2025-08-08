@@ -5,7 +5,7 @@ namespace Spatie\Harvest\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use Spatie\Harvest\Resources\UserResource;
+use Spatie\Harvest\Data\UserData;
 
 class GetAuthenticatedUser extends Request
 {
@@ -16,8 +16,8 @@ class GetAuthenticatedUser extends Request
         return '/users/me';
     }
 
-    public function createDtoFromResponse(Response $response): UserResource
+    public function createDtoFromResponse(Response $response): UserData
     {
-        return UserResource::createFromResponse($response->json());
+        return UserData::createFromResponse($response->json());
     }
 }

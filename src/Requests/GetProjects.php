@@ -5,7 +5,7 @@ namespace Spatie\Harvest\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use Spatie\Harvest\Resources\ProjectResource;
+use Spatie\Harvest\Data\ProjectData;
 
 class GetProjects extends Request
 {
@@ -29,12 +29,12 @@ class GetProjects extends Request
         ], fn (mixed $value) => $value !== null);
     }
 
-    /** @return array<ProjectResource> */
+    /** @return array<ProjectData> */
     public function createDtoFromResponse(Response $response): array
     {
         return array_map(
-            fn (array $object) => ProjectResource::createFromResponse($object),
-            $response->json()
+            fn (array $object) => ProjectData::createFromResponse($object),
+            $response->json()['projects']
         );
     }
 }

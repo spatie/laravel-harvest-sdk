@@ -4,8 +4,8 @@ namespace Spatie\Harvest;
 
 use Saloon\Http\Auth\TokenAuthenticator;
 use Saloon\Http\Connector;
-use Spatie\Harvest\Groups\ProjectGroup;
-use Spatie\Harvest\Groups\UserGroup;
+use Spatie\Harvest\Resources\ProjectResource;
+use Spatie\Harvest\Resources\UserResource;
 
 class Harvest extends Connector
 {
@@ -33,13 +33,13 @@ class Harvest extends Connector
         return new TokenAuthenticator($this->accessToken);
     }
 
-    public function users(): UserGroup
+    public function users(): UserResource
     {
-        return new UserGroup($this);
+        return new UserResource($this);
     }
 
-    public function projects(): ProjectGroup
+    public function projects(): ProjectResource
     {
-        return new ProjectGroup($this);
+        return new ProjectResource($this);
     }
 }

@@ -5,7 +5,7 @@ namespace Spatie\Harvest\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
-use Spatie\Harvest\Resources\UserResource;
+use Spatie\Harvest\Data\UserData;
 
 class GetUsers extends Request
 {
@@ -27,12 +27,12 @@ class GetUsers extends Request
         ], fn (mixed $value) => $value !== null);
     }
 
-    /** @return array<UserResource> */
+    /** @return array<UserData> */
     public function createDtoFromResponse(Response $response): array
     {
         return array_map(
-            fn (array $object) => UserResource::createFromResponse($object),
-            $response->json()
+            fn (array $object) => UserData::createFromResponse($object),
+            $response->json()['users']
         );
     }
 }
