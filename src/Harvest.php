@@ -4,14 +4,14 @@ namespace Spatie\Harvest;
 
 use Saloon\Http\Auth\TokenAuthenticator;
 use Saloon\Http\Connector;
+use Saloon\Http\Request;
+use Saloon\Http\Response;
+use Saloon\PaginationPlugin\Contracts\HasPagination;
 use Saloon\PaginationPlugin\PagedPaginator;
+use Saloon\PaginationPlugin\Paginator;
 use Spatie\Harvest\Resources\ProjectResource;
 use Spatie\Harvest\Resources\TimeEntryResource;
 use Spatie\Harvest\Resources\UserResource;
-use Saloon\Http\Request;
-use Saloon\PaginationPlugin\Paginator;
-use Saloon\PaginationPlugin\Contracts\HasPagination;
-use Saloon\Http\Response;
 
 class Harvest extends Connector implements HasPagination
 {

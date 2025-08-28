@@ -15,9 +15,7 @@ class TimeEntryData
         public string $taskName,
         public float $hours,
         public ?string $notes = null,
-    )
-    {
-    }
+    ) {}
 
     /** @param array<string, mixed> $response */
     public static function createFromResponse(array $response): TimeEntryData
