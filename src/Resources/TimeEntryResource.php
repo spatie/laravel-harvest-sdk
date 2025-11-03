@@ -8,8 +8,8 @@ use Spatie\Harvest\Requests\GetTimeEntries;
 
 class TimeEntryResource extends BaseResource
 {
-    public function all(string $from, ?int $userId = null): Paginator
+    public function all(string $from, ?string $to, ?int $userId = null): Paginator
     {
-        return $this->connector->paginate(new GetTimeEntries($from, $userId));
+        return $this->connector->paginate(new GetTimeEntries($from, $to, $userId));
     }
 }
