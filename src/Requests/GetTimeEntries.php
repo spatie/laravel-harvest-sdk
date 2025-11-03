@@ -15,6 +15,7 @@ class GetTimeEntries extends Request implements Paginatable
 
     public function __construct(
         protected ?string $from = null,
+        protected ?string $to = null,
         protected ?int $userId = null,
     ) {}
 
@@ -27,6 +28,7 @@ class GetTimeEntries extends Request implements Paginatable
     {
         return [
             'from' => $this->from ?? null,
+            'to' => $this->to ?? null,
             'user_id' => $this->userId ?? null,
         ];
     }
