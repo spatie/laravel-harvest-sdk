@@ -7,7 +7,6 @@ use Saloon\Http\Request;
 use Saloon\Http\Response;
 use Saloon\PaginationPlugin\Contracts\Paginatable;
 use Spatie\Harvest\Data\TimeEntryData;
-use Spatie\Harvest\Data\UserData;
 
 class GetTimeEntries extends Request implements Paginatable
 {
@@ -33,7 +32,7 @@ class GetTimeEntries extends Request implements Paginatable
         ];
     }
 
-    /** @return array<UserData> */
+    /** @return array<TimeEntryData> */
     public function createDtoFromResponse(Response $response): array
     {
         return array_map(

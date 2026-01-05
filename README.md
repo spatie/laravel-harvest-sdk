@@ -39,69 +39,69 @@ HARVEST_USER_AGENT='name (name@email.com)'
 
 ## Usage
 
-To start interacting with the Harvest API, you can resolve the Harvest instance from the container:
+To start interacting with the Harvest API, you can resolve the Harvest instance from the container or use the facade:
 
 ```php
 use Spatie\Harvest\Harvest;
 
 $harvest = app(Harvest::class);
+
+// or use the facade
+use Spatie\Harvest\Facades\Harvest;
 ```
 
 ## Users
 
-###  Retrieve the authenticated user
+### Retrieve the authenticated user
 
 ```php
-use Spatie\Harvest\Harvest;
-use Spatie\Harvest\Resources\UserResource;
+use Spatie\Harvest\Data\UserData;
+use Spatie\Harvest\Facades\Harvest;
 
-public function user(Harvest $harvest): UserResource
-{
-    return $harvest->users()->me();
-}
+$user = Harvest::users()->me()->dto();
+// Returns: UserData
 ```
 
-###  Retrieve all users
+### Retrieve all users
 
 ```php
-use Spatie\Harvest\Harvest;
-use Spatie\Harvest\Resources\UserResource;
+use Spatie\Harvest\Data\UserData;
+use Spatie\Harvest\Facades\Harvest;
 
-/** @return array<UserResource> */
-public function user(Harvest $harvest): array
-{
-    return $harvest->users()->all();
-}
+$users = Harvest::users()->all()->dto();
+// Returns: array<UserData>
 ```
 
 ## Projects
 
-###  Retrieve all projects
+### Retrieve all projects
 
 ```php
-use Spatie\Harvest\Harvest;
-use Spatie\Harvest\Resources\ProjectResource;
+use Spatie\Harvest\Data\ProjectData;
+use Spatie\Harvest\Facades\Harvest;
 
-/** @return array<ProjectResource> */
-public function user(Harvest $harvest): array
-{
-    return $harvest->projects()->all();
-}
+$projects = Harvest::projects()->all()->dto();
+// Returns: array<ProjectData>
 ```
 
-## Filtering
+## Time Entries
 
-You can filter the results by passing an array of filters to the `all` method:
+### Retrieve time entries
+
+Time entries are paginated. You must provide a `from` date, and optionally a `to` date and `userId`.
 
 ```php
-use Spatie\Harvest\Harvest;
-use Spatie\Harvest\Resources\UserResource;
+use Spatie\Harvest\Data\TimeEntryData;
+use Spatie\Harvest\Facades\Harvest;
 
-/** @return array<UserResource> */
-public function user(Harvest $harvest): array
-{
-    return $harvest->users()->all(active: true);
+$paginator = Harvest::timeEntries()->all(from: '2024-01-01', to: '2024-01-31');
+
+foreach ($paginator as $timeEntries) {
+    // Each page returns: array<TimeEntryData>
 }
+
+// Or collect all pages
+$allTimeEntries = $paginator->collect();
 ```
 
 ## Testing
