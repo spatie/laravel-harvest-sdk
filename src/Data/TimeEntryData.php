@@ -15,6 +15,7 @@ class TimeEntryData
         public string $taskName,
         public float $hours,
         public ?string $notes = null,
+        public bool $isRunning = false,
     ) {}
 
     /** @param array<string, mixed> $response */
@@ -29,6 +30,7 @@ class TimeEntryData
             (string) $response['task']['name'],
             $response['hours'],
             $response['notes'],
+            (bool) ($response['is_running'] ?? false),
         );
     }
 }
