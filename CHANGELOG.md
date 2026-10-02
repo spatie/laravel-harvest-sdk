@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-harvest-sdk` will be documented in this file.
 
+## 2.0.0 - 2026-10-02
+
+- Upgrade to Saloon v4 (`saloonphp/saloon` ^4.3). The connector, requests and responses are Saloon classes, so code that interacts with them directly should follow the [Saloon v4 upgrade guide](https://docs.saloon.dev/upgrade/upgrading-from-v3).
+
 ## 1.0.1 - 2026-03-26
 
 ### What's Changed
